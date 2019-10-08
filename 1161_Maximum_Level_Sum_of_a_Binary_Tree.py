@@ -14,7 +14,7 @@ class Solution:
         q.append(None)
         node = None
         level=maxlevel=1
-        curSum=maxSum=0
+        curSum=maxSum=root.val
         while q:
             node = q.popleft()
             if node == None:
