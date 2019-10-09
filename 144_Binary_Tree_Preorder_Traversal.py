@@ -6,17 +6,17 @@
 #         self.right = None
 
 class Solution(object):
-    def inorderTraversal(self, root):
+    def preorderTraversal(self, root):
         """
         :type root: TreeNode
         :rtype: List[int]
         """
         result = []
-        def inorder(root,result):
+        def preorder(root,result):
             if not root:
                 return
-            inorder(root.left,result)
             result.append(root.val)
-            inorder(root.right,result)
-        inorder(root,result)
+            preorder(root.left,result)
+            preorder(root.right,result)
+        preorder(root,result)
         return result
