@@ -26,5 +26,3 @@ class Solution:
             head = prev
         tail.next = cur
         return head
-            
-        
