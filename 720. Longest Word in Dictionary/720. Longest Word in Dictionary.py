@@ -1,16 +1,12 @@
 class Solution:
     def longestWord(self, words: List[str]) -> str:
-        result = ""
+        longest_word = ""
         wordset = set(words)
-        print(wordset)
         for word in words:
-            print(word)
-            if len(word) > len(result):
-                if all([word[:i] in wordset for i in range(1,len(word))]):
-                    result = word
-                    print("result: ",result)
-            elif len(word) == len(result) and word < result:
-                if all([word[:i] in wordset for i in range(1,len(word))]):
-                    result = word
-                    print("2nd result: ",result)
-        return result
+            if len(word) > len(longest_word):
+                if all(word[:i] in wordset for i in range(1,len(word))):
+                    longest_word = word
+            if len(word) == len(longest_word) and word < longest_word:
+                if all(word[:i] in wordset for i in range(1,len(word))):
+                    longest_word = word
+        return longest_word
