@@ -1,8 +1,7 @@
 class TrieNode:
     def __init__(self):
         self.children = {}
-        self.end = False
-        
+        self.end = 0
 class Trie:
 
     def __init__(self):
@@ -10,7 +9,6 @@ class Trie:
         Initialize your data structure here.
         """
         self.root = TrieNode()
-        
         
 
     def insert(self, word: str) -> None:
@@ -22,7 +20,7 @@ class Trie:
             if w not in node.children:
                 node.children[w] = TrieNode()
             node = node.children[w]
-        node.end = True
+        node.end = 1
         
 
     def search(self, word: str) -> bool:
@@ -34,7 +32,7 @@ class Trie:
             if w not in node.children:
                 return False
             node = node.children[w]
-        return node.end
+        return node.end 
         
 
     def startsWith(self, prefix: str) -> bool:
@@ -46,4 +44,11 @@ class Trie:
             if w not in node.children:
                 return False
             node = node.children[w]
-        return True
+        return 1
+
+
+# Your Trie object will be instantiated and called as such:
+# obj = Trie()
+# obj.insert(word)
+# param_2 = obj.search(word)
+# param_3 = obj.startsWith(prefix)
