@@ -5,15 +5,12 @@
 #         self.next = None
 
 class Solution:
-    def removeElements(self, head: ListNode, val: int) -> ListNode:
-        temp = ListNode(-100)
-        temp.next = head
-        prev,cur = temp,head
-        while cur:
-            if cur.val == val:
-                prev.next = cur.next
-            else:
-                prev = cur
-            cur = cur.next
-        return temp.next
+    def deleteNode(self, node):
+        """
+        :type node: ListNode
+        :rtype: void Do not return anything, modify node in-place instead.
+        """
+        if node.next is not None:
+            node.val, node.next = node.next.val, node.next.next
+                
         
