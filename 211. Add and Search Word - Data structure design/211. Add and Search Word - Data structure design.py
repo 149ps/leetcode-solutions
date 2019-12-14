@@ -36,6 +36,7 @@ class WordDictionary:
                     temp_trie.root = node.children[child]
                     if temp_trie.search(word[i+1:]):
                         return True
+                return False
             elif letter not in node.children:
                 return False
             node = node.children[letter]
