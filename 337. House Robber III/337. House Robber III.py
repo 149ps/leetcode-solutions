@@ -13,3 +13,14 @@ class Solution:
             left,right = dfs(node.left), dfs(node.right)
             return (max(left) + max(right), node.val + left[0] + right[0])
         return max(dfs(root))
+
+# Little Tweak on how to take values while returning it.
+
+class Solution:
+    def rob(self, root: TreeNode) -> int:
+        def dfs(node):
+            if not node:
+                return (0,0)
+            left,right = dfs(node.left), dfs(node.right)
+            return (node.val + left[1] + right[1],max(left) + max(right))
+        return max(dfs(root))
