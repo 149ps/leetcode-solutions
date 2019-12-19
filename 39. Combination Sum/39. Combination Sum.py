@@ -35,7 +35,10 @@ class Solution:
                 return
             if target == 0 :
                 result.append(path)
+                return
             for i in range(index,len(nums)):
+                if nums[i] > target: # this check will help in preventing unnecessary computations
+                    break
                 dfs(nums,i,target - nums[i],path+[nums[i]])
         dfs(candidates,0,target, [])
         return result
