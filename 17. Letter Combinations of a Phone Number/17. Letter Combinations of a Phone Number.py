@@ -12,9 +12,8 @@ class Solution:
             if len(temp_digits) == 0:
                 combinations.append(string)
                 return
-            else:
-                for letter in phone[temp_digits[0]]:
-                    dfs(string+letter, temp_digits[1:])
+            for letter in phone[temp_digits[0]]:
+                dfs(string+letter, temp_digits[1:])
         if not digits:
             return []
         combinations = []
