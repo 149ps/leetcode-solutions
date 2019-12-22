@@ -1,11 +1,15 @@
 class Solution:
     def isValid(self, s: str) -> bool:
         stack = []
-        parantheses = { ')': '(', '}':'{',']':'['}
+        mapping = {
+            ']':'[',
+            '}':'{',
+            ')':'('
+        }
         for char in s:
-            if char in parantheses.keys():
-                head = stack.pop() if stack else '#'
-                if parantheses[char] != head:
+            if char in mapping.keys():
+                top = stack.pop() if stack else '#'
+                if mapping[char]!= top:
                     return False
             else:
                 stack.append(char)
