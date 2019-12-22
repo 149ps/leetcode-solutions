@@ -1,7 +1,7 @@
 class Solution:
     def titleToNumber(self, s: str) -> int:
-        tmp = list(reversed(list(s)))
         result = 0
-        for i,char in enumerate(tmp):
-            result += (26**i) * ((ord(char) - ord('A')) +1)
+        temp_list = list(reversed(list(s)))
+        for i in range(len(temp_list)):
+            result += (ord(temp_list[i]) - ord('A') + 1) * (26**i)
         return result
