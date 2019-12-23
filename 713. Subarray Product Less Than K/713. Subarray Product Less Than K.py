@@ -14,4 +14,16 @@ Note:
 0 < nums[i] < 1000.
 0 <= k < 10^6.
 """
-def
+class Solution:
+    def numSubarrayProductLessThanK(self, nums: List[int], k: int) -> int:
+        if k <= 1:
+            return 0
+        count,product = 0,1
+        left = 0
+        for i,num in enumerate(nums):
+            product *= num
+            while product >= k:
+                product /= nums[left]
+                left +=1
+            count += i - left + 1
+        return count
