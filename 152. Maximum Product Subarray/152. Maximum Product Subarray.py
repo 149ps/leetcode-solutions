@@ -14,8 +14,8 @@ Explanation: The result cannot be 2, because [-2,-1] is not a subarray.
 """
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
-        max_temp, min_temp,Max = nums[0],nums[0],nums[0]
+        maxTemp,minTemp,Max = nums[0],nums[0],nums[0]
         for i in range(1,len(nums)):
-            max_temp, min_temp = max(nums[i],nums[i]*max_temp,nums[i]*min_temp), min(nums[i],nums[i]*max_temp,nums[i]*min_temp)
-            Max = max(max_temp,Max)
+            maxTemp,minTemp = max(nums[i]*minTemp,nums[i]*maxTemp,nums[i]), min(nums[i]*minTemp,nums[i]*maxTemp,nums[i])
+            Max = max(Max,maxTemp)
         return Max
