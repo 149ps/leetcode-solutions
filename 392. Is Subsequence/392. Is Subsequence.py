@@ -33,4 +33,4 @@ class Solution:
                 count += 1
                 if count >= len(s):
                     return True
-        return count == len(s)
+        return False
