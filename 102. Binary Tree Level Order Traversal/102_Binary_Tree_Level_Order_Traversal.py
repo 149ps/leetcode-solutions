@@ -10,22 +10,22 @@ class Solution:
         if not root:
             return None
         q = collections.deque()
+        node = None
         q.append(root)
         q.append(None)
-        node = None
         res = []
         temp = []
         while q:
             node = q.popleft()
-            if node == None:
-                res.append(temp)
-                temp = []
-                if q:
-                    q.append(None)
-            else:
+            if node:
                 temp.append(node.val)
                 if node.left:
                     q.append(node.left)
-                if node.right != None:
+                if node.right:
                     q.append(node.right)
+            else:
+                res.append(temp)
+                temp = []
+                if q:       # if there are still elements in a queue
+                    q.append(None)
         return res
