@@ -20,3 +20,4 @@ class Solution:
         for row in matrix:
             result.extend(row)
         return sorted(result)[k-1]
+        
