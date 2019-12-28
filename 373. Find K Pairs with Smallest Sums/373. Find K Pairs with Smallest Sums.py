@@ -27,12 +27,12 @@ class Solution:
     def kSmallestPairs(self, nums1: List[int], nums2: List[int], k: int) -> List[List[int]]:
         if not nums1 or not nums2:
             return []
-        heap,result = [],[]
+        result, heap = [],[]
         heapq.heapify(heap)
         for num1 in nums1:
             for num2 in nums2:
-                heapq.heappush(heap,((num1+num2),[num1,num2]))        
-        while k>0:
+                heapq.heappush(heap,(num1+num2,[num1,num2]))
+        while k > 0:
             if heap:
                 result.append(heapq.heappop(heap)[1])
                 k -= 1
