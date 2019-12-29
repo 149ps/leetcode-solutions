@@ -14,10 +14,10 @@ class Solution:
         if not nums:
             return 0
         total,result,left = 0,sys.maxsize,0
-        for i in range(len(nums)):
-            total += nums[i]
+        for right,num in enumerate(nums):
+            total += num
             while total >= s:
-                result = min(result,i-left+1)
+                result = min(result,right-left+1)
                 total -= nums[left]
                 left += 1
         return result if result != sys.maxsize else 0
