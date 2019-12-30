@@ -30,15 +30,13 @@ class Solution:
         global result
         result = []
         candidates.sort()
-        def dfs(nums,index,target,path):
+        def backtrack(nums,index,target,temp):
             if target < 0:
                 return
-            if target == 0 :
-                result.append(path)
+            if target == 0:
+                result.append(temp)
                 return
-            for i in range(index,len(nums)):
-                if nums[i] > target: # this check will help in preventing unnecessary computations
-                    break
-                dfs(nums,i,target - nums[i],path+[nums[i]])
-        dfs(candidates,0,target, [])
+            for index in range(index,len(nums)):
+                backtrack(nums,index,target-nums[index],temp+[nums[index]])
+        backtrack(candidates,0,target,[])
         return result
