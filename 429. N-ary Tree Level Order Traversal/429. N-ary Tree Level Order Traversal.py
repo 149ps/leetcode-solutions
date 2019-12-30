@@ -25,15 +25,21 @@ class Node:
         self.val = val
         self.children = children
 """
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val=None, children=None):
+        self.val = val
+        self.children = children
+"""
 class Solution:
     def levelOrder(self, root: 'Node') -> List[List[int]]:
         if not root:
             return None
         q = collections.deque()
-        final_list,temp = [],[]
-        node = None
         q.append(root)
         q.append(None)
+        node,result,temp = None,[],[]
         while q:
             node = q.popleft()
             if node:
@@ -41,8 +47,8 @@ class Solution:
                 if node.children:
                     q.extend(node.children)
             else:
-                final_list.append(temp)
+                result.append(temp)
                 temp = []
                 if q:
                     q.append(None)
-        return final_list
+        return result
