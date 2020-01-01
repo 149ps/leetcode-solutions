@@ -27,16 +27,17 @@ A solution set is:
 """
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        global result
         result = []
         candidates.sort()
-        def backtrack(nums,index,target,temp):
+        def backtrack(nums,index,target,path):
+            if target == 0:
+                result.append(path)
+                return
             if target < 0:
                 return
-            if target == 0:
-                result.append(temp)
-                return
-            for index in range(index,len(nums)):
-                backtrack(nums,index,target-nums[index],temp+[nums[index]])
+            for i in range(index,len(nums)):
+                if nums[i] > target:
+                    return
+                backtrack(nums,i,target-nums[i],path+[nums[i]])
         backtrack(candidates,0,target,[])
         return result
