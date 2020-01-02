@@ -17,17 +17,14 @@ Output: 6
 """
 class Solution:
     def findShortestSubArray(self, nums: List[int]) -> int:
-        hmap,left_index,right_index,degree,result = {},{},{},1,len(nums)
+        hmap,left,right = collections.Counter(nums),{},{}
+        result = len(nums)
+        degree = max(hmap.values())
         for i,num in enumerate(nums):
-            if num not in left_index.keys():
-                left_index[num] = i
-            right_index[num] = i
-            if hmap.get(num):
-                hmap[num] += 1
-                degree = max(degree,hmap[num])
-            else:
-                hmap[num] = 1
+            if num not in left:
+                left[num] = i
+            right[num] = i
         for num in nums:
             if hmap[num] == degree:
-                result = min(result,right_index[num]-left_index[num]+1)
+                result = min(result,right[num]-left[num]+1)
         return result
