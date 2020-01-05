@@ -21,13 +21,16 @@ class Solution:
     def smallestCommonElement(self, mat: List[List[int]]) -> int:
         if not mat:
             return 0
-        if len(mat) == 1:
+        if len(mat) == 0:
             return min(mat[0])
         hmap = {}
         for row in mat:
             for item in row:
-                hmap[item] = hmap.get(item,0) + 1
-        for key in sorted(hmap.keys()):
-            if hmap[key] == len(mat):
-                return key
+                if hmap.get(item):
+                    hmap[item] += 1
+                else:
+                    hmap[item] = 1
+        for k in sorted(hmap.keys()):
+            if hmap[k] == len(mat):
+                return k
         return -1
