@@ -46,3 +46,4 @@ class Solution:
             if isloop(i,set(),num//abs(num)):
                 return True
         return False
+        
