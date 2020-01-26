@@ -26,11 +26,10 @@ class Solution:
             return False
         if not s and not t:
             return True
-        list_t = list(t)
         count = 0
         for i,char in enumerate(t):
             if char == s[count]:
-                count += 1
-                if count >= len(s):
-                    return True
+                count+=1
+            if count >= len(s):
+                return True
         return False
