@@ -20,6 +20,13 @@ Explanation:
 #         self.left = None
 #         self.right = None
 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
 class Solution:
     def rightSideView(self, root: TreeNode) -> List[int]:
         if not root:
@@ -27,15 +34,15 @@ class Solution:
         q = collections.deque()
         node = None
         q.append(root)
-        final_list = []
+        result = []
         while q:
             size = len(q)
             for i in range(size):
                 node = q.popleft()
-                if i == size-1:
-                    final_list.append(node.val)
+                if i == size - 1:
+                    result.append(node.val) 
                 if node.left:
                     q.append(node.left)
                 if node.right:
                     q.append(node.right)
-        return final_list
+        return result
