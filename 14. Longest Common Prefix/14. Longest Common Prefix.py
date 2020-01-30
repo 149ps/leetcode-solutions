@@ -21,7 +21,7 @@ class Trie:
         while node:
             if node.end or len(node.children) > 1:
                 return lcp
-            char = list(node.children)[0]
+            char = list(node.children)[0] # [0] because you need the character and not list 
             lcp += char
             node = node.children[char]
             
