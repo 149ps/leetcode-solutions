@@ -34,6 +34,9 @@ class Solution:
         """
         if (max_freq)*(k-1) >= len(s) and len(count) > 1: 
             return ""
+        """
+        In Python, Min heap is created by default. So if we want to build a max heap out of it. We have to take the negative values of the keys.
+        """
         charFreq = [(-v,k) for k,v in count.items()]
         heapq.heapify(charFreq)
         while charFreq:
