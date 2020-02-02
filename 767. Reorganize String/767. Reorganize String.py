@@ -34,4 +34,4 @@ class Solution:
                 heapq.heappush(charFreq,(item1[0]+1,item1[1]))
             if item2[0] < -1:
                 heapq.heappush(charFreq,(item2[0]+1,item2[1]))
-        return ''.join(final_list) + (charFreq[0][1] if charFreq else '')
+        return ''.join(final_list) + (charFreq[0][1] if charFreq else '') # This is for s = 'aba' after first iteration Max heap will have only (-1,a).
