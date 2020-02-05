@@ -9,13 +9,11 @@ class Solution:
             if [i,j] == destination:
                 return True
             for x,y in dirs:
-                row = i + x
-                col = j + y
-                while 0 <= row < len(maze) and 0 <= col < len(maze[0]) and maze[row][col]!=1:
+                row = i
+                col = j
+                while 0 <= row+x < len(maze) and 0 <= col+y < len(maze[0]) and maze[row+x][col+y]!=1:
                     row += x
                     col += y
-                row -= x
-                col -= y
                 if maze[row][col] == 0:
                     Q.append([row,col])
         return False
