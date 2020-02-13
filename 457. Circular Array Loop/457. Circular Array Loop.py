@@ -39,6 +39,9 @@ class Solution:
             if i in visiting:
                 return True
             visiting.add(i)
+            """
+            first if condition is for example: [2,2] False
+            """
             if (i + nums[i]) % len(nums) == i or nums[i] // abs(nums[i]) != direction:
                 return False
             return isloop((i + nums[i]) % len(nums),visiting,direction)
