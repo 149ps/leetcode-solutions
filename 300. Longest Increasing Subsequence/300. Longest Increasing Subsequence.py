@@ -17,7 +17,6 @@ class Solution:
         if not nums:
             return 0
         result = [0 for _ in range(len(nums))]
-        result[0] = 1
         final = 1
         for i in range(len(nums)):
             temp_max = 0
