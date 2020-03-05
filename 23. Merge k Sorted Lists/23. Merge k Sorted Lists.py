@@ -16,7 +16,7 @@ Output: 1->1->2->3->4->4->5->6
 #     def __init__(self, x):
 #         self.val = x
 #         self.next = None
-
+import collections
 class Solution:
     def mergeKLists(self, lists: List[ListNode]) -> ListNode:
         min_heap = []
