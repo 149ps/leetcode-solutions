@@ -17,7 +17,6 @@ class Solution:
         start_row,start_col = 0,0
         x = 1
         result = [[0]* (C + 1) for _ in range(R+1)]
-        print(result)
         while start_col <= C and start_row <= R:
             for i in range(start_col,C+1):
                 result[start_row][i] = x
