@@ -30,4 +30,4 @@ class Solution:
                     break
             if not flag:
                 return '{:02d}:{:02d}'.format(divmod(cur,60)[0],divmod(cur,60)[1]) 
-            """ :02d is important. Consider the case : "01:32" . Your output would be "1:33" instead of "01:33". """
+            """ :02d is important. Consider the case : "01:32" . Your output would be "1:33" instead of "01:33"."""
