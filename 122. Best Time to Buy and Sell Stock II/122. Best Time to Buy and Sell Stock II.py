@@ -26,12 +26,12 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 """
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        max_stock = 0
-        min_stock = sys.maxsize
+        max_profit = 0
+        min_price = sys.maxsize
         for i in range(len(prices)):
-            if prices[i] < min_stock:
-                min_stock = prices[i]
+            if prices[i] <= min_price:
+                min_price = prices[i]
             else:
-                max_stock += prices[i] - min_stock
-                min_stock = prices[i]
-        return max_stock
+                max_profit += prices[i] - min_price
+                min_price = prices[i]
+        return max_profit
