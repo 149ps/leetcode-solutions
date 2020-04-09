@@ -41,14 +41,19 @@ Each node has a unique integer value from 1 to 100.
 
 class Solution:
     def isCousins(self, root: TreeNode, x: int, y: int) -> bool:
-        q = collections.deque()
-        d = 0
-        x_level = y_level = 0
-        x_parent = y_parent = -100
-        q.append([root,d,-1])
+        """
+        Whole point of this solution is that we will keep track of the depth and parent of every             node. If two nodes have the same depth and different parent we return True o/w False.
+        """
+        if not root: # base case
+            return None
+        q = collections.deque() # Deque initialization
+        d = 0 # keeping track of the depth(level). Initialized at 0
+        x_level = y_level = 0 # initially both nodes levels initilized at 0.
+        x_parent = y_parent = 0 # initially both nodes parents initilized at 0.
+        q.append([root,d,-1]) # (current node, depth,parent)
         while q:
             length = len(q)
-            d += 1
+            d += 1 # depth(level) is increased at every level.
             for i in range(length):
                 node,level,parent = q.popleft()
                 if node.val == x:
@@ -57,12 +62,13 @@ class Solution:
                 elif node.val == y:
                     y_level = level
                     y_parent = parent
+                # Our two condition checks.    
+                if x_level and y_level:
+                    if x_level == y_level and x_parent != y_parent:
+                        return True
+                    else:
+                        return False
                 if node.left:
                     q.append([node.left,d,node.val])
                 if node.right:
                     q.append([node.right,d,node.val])
-            if x_level and y_level:
-                if x_level == y_level and x_parent != y_parent:
-                    return True
-                else:
-                    return False
