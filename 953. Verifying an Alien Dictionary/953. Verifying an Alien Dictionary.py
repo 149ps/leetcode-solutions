@@ -35,7 +35,7 @@ class Solution:
         print(hmap)
         for word1,word2 in zip(words,words[1:]):
             if len(word1) > len(word2) and word1[:len(word2)] == word2: """ The second condition is for the case :: ["kuvp","q"]
-"ngxlkthsjuoqcpavbfdermiywz". """
+"ngxlkthsjuoqcpavbfdermiywz". Also to know, if word2 is thr prefix of word1"""
                 return False
             for char1,char2 in zip(word1,word2):
                 if hmap[char1] > hmap[char2]:
