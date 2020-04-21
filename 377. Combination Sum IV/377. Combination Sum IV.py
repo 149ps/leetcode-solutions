@@ -43,3 +43,4 @@ class Solution:
                 backtrack(nums,i,total-nums[i])
         backtrack(nums,0,target)
         return count
+        
