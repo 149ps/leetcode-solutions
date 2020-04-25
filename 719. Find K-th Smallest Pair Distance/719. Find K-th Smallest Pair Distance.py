@@ -29,4 +29,3 @@ class Solution:
             temp,pair = heapq.heappop(min_heap)
             k -= 1
         return temp
-        
