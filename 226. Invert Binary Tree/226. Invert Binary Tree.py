@@ -28,6 +28,7 @@ Google: 90% of our engineers use the software you wrote (Homebrew), but you canâ
 #         self.val = val
 #         self.left = left
 #         self.right = right
+import collections
 class Solution:
     def invertTree(self, root: TreeNode) -> TreeNode:
         if not root:
