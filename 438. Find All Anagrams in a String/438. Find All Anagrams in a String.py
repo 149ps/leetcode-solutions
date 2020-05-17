@@ -42,7 +42,7 @@ class Solution:
             if hmap_temp[s[slow]] == 0:
                 del hmap_temp[s[slow]]
             if fast < len(s):
-                if hmap_temp.get(s[fast]) or hmap_temp.get(s[fast]) == 0:
+                if hmap_temp.get(s[fast]):
                     hmap_temp[s[fast]] += 1
                 else:
                     hmap_temp[s[fast]] = 1
