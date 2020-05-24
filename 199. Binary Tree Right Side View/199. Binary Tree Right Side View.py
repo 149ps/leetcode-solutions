@@ -15,32 +15,22 @@ Explanation:
 """
 # Definition for a binary tree node.
 # class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 class Solution:
     def rightSideView(self, root: TreeNode) -> List[int]:
         if not root:
             return None
-        q = collections.deque()
-        node = None
+        q,result = collections.deque(),[]
         q.append(root)
-        result = []
         while q:
-            size = len(q)
-            for i in range(size):
+            n = len(q)
+            for i in range(n):
                 node = q.popleft()
-                if i == size - 1:
-                    result.append(node.val) 
+                if i == n-1:
+                    result.append(node.val)
                 if node.left:
                     q.append(node.left)
                 if node.right:
