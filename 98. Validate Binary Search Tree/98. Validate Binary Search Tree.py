@@ -46,4 +46,4 @@ class Solution:
             if not helper(node.right,node.val,upper):
                 return False
             return True
-        return helper(root,-sys.maxsize-1,sys.maxsize)
+        return helper(root,-sys.maxsize,sys.maxsize)
