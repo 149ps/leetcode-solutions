@@ -8,14 +8,13 @@ class Solution:
     def searchBST(self, root: TreeNode, val: int) -> TreeNode:
         if not root:
             return None
-        q = collections.deque()
-        q.append(root)
-        while q:
-            node = q.popleft()
-            if node.val == val:
-                return node
-            if node.left:
-                q.append(node.left)
-            if node.right:
-                q.append(node.right)
-        return None
+        if root.val == val:
+            return root
+        left = self.searchBST(root.left, val)
+        right = self.searchBST(root.right, val)
+        if left:
+            return left
+        elif right:
+            return right
+        else:
+            return None
