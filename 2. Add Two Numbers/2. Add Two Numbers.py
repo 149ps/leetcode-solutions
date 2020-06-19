@@ -14,23 +14,27 @@ Explanation: 342 + 465 = 807.
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
 class Solution:
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
-        head1,head2 = l1,l2
-        temp = ListNode(-100)
-        cur = temp
-        carry,total = 0,0
-        while head1 or head2:
-            a = head1.val if head1 else 0
-            b = head2.val if head2 else 0
-            cur_total = a + b + carry
-            carry = cur_total // 10
-            temp.next = ListNode(cur_total % 10)
-            temp = temp.next
-            if head1:
-                head1 = head1.next
-            if head2:
-                head2  = head2.next
+        prev = ListNode(-100)
+        cur = prev
+        total,carry = 0,0
+        while l1 or l2:
+            x =  l1.val if l1 else 0
+            y = l2.val if l2 else 0
+            total = (x + y + carry) % 10
+            carry = (x + y + carry) // 10
+            cur.next = ListNode(total)
+            cur = cur.next
+            if l1:
+                l1 = l1.next
+            if l2:
+                l2 = l2.next
         if carry:
-            temp.next = ListNode(carry)
-        return cur.next
+            cur.next = ListNode(carry)
+        return prev.next
