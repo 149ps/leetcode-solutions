@@ -30,8 +30,9 @@ class Solution:
             if start not in visited:
                 for end in range(start+1,len(s)+1):
                     if s[start:end] in wordDict:
-                        q.append(end)
                         if end == len(s):
                             return True
+                        else:
+                            q.append(end)
                 visited.add(start)
         return False
