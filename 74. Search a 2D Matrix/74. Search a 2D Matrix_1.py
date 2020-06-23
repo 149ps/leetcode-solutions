@@ -8,7 +8,7 @@ class Solution:
         hi = row * col - 1
         while lo <= hi:
             mid = (lo + hi) // 2
-            mid_element = matrix[mid//col][mid%col]
+            mid_element = matrix[mid//col][mid%col] # why col because numbers are [1,2,3],[4,5,6],[7,8,9] way and divided by columns.
             if mid_element == target:
                 return True
             elif  target > mid_element:
