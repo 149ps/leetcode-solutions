@@ -27,13 +27,12 @@ class Solution:
         """
         if not matrix:
             return False
-        final_list = []
-        row = len(matrix)
-        col = len(matrix[0])
-        for i in range(row):
-            for j in range(col):
-                final_list.append(matrix[i][j])
-        for num in final_list:
-            if num == target:
+        col,row = len(matrix[0])-1,0
+        while row < len(matrix) and col >= 0:
+            if matrix[row][col]  == target:
                 return True
+            elif matrix[row][col]  > target:
+                col -= 1
+            else:
+                row += 1
         return False
