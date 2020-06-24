@@ -27,21 +27,21 @@ You may assume that there are no duplicate edges in the input prerequisites.
 """
 class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
-        outd = [[] for x in range(numCourses)]
+        outd = {x:[] for x in range(numCourses)}
         ind = [0] * numCourses
         for x,y in prerequisites:
-            ind[x] += 1
             outd[y].append(x)
-        result = []
+            ind[x] += 1
+        q = collections.deque()
         for i in range(numCourses):
             if ind[i] == 0:
-                result.append(i)
-        temp = 0
-        while temp != len(result):
-            x = result[temp]
-            temp += 1
+                q.append(i)
+        result = []
+        while q:
+            x = q.popleft()
+            result.append(x)
             for i in outd[x]:
                 ind[i] -= 1
                 if ind[i] == 0:
-                    result.append(i)
-        return result if temp == numCourses else []
+                    q.append(i)
+        return result if len(result) == numCourses else []
