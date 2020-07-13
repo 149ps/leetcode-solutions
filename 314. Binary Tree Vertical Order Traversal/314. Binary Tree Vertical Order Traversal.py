@@ -71,31 +71,24 @@ Output:
 """
 # Definition for a binary tree node.
 # class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 class Solution:
     def verticalOrder(self, root: TreeNode) -> List[List[int]]:
         if not root:
-            return []
+            return None
+        result = {}
         q = collections.deque()
         q.append((root,0))
-        levels,result = {},[]
         while q:
-            for i in range(len(q)):
-                cur,level = q.popleft()
-                if level not in levels.keys():
-                    temp = [cur.val]
-                    levels[level] = temp
-                else:
-                    levels[level].append(cur.val)
-                if cur.left:
-                    q.append((cur.left,level-1))
-                if cur.right:
-                    q.append((cur.right,level+1))
-        for j in sorted(levels.keys()):
-            result.append(levels[j])
-        return result
+            node,val = q.popleft()
+            if result.get(val): result[val].append(node.val)
+            else:   result[val] = [node.val]
+            if node.left:
+                q.append((node.left,val-1))
+            if node.right:
+                q.append((node.right,val+1))
+        return [result[val] for val in sorted(result)]
         
