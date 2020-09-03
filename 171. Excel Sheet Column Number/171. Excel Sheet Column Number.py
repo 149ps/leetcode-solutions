@@ -26,8 +26,7 @@ Output: 701
 """
 class Solution:
     def titleToNumber(self, s: str) -> int:
-        temp = list(reversed(list(s)))
-        res = 0
-        for i,char in enumerate(temp):
-            res += (ord(char) - ord('A') +1) * (26**i)
-        return res
+        result = 0
+        for i,char in enumerate(s[::-1]):
+            result += (ord(char) - ord('A') + 1 ) * (26**i)
+        return result
