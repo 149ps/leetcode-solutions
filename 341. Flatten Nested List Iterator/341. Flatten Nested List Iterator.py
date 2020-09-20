@@ -16,11 +16,13 @@ Output: [1,4,6]
 Explanation: By calling next repeatedly until hasNext returns false, 
              the order of elements returned by next should be: [1,4,6].
 """
+
+
 # """
 # This is the interface that allows for creating nested lists.
 # You should not implement it, or speculate about its implementation
 # """
-#class NestedInteger:
+# class NestedInteger:
 #    def isInteger(self) -> bool:
 #        """
 #        @return True if this NestedInteger holds a single integer, rather than a nested list.
@@ -40,20 +42,20 @@ Explanation: By calling next repeatedly until hasNext returns false,
 
 class NestedIterator:
     def __init__(self, nestedList: [NestedInteger]):
-        self.stack = nestedList[::-1]
-        
-    
+        # Copy the list into stack
+
+        self.stack = nestedList[:]
+
     def next(self) -> int:
-        return self.stack.pop().getInteger()
-    
+        return self.stack.pop(0)
+
     def hasNext(self) -> bool:
+        # We will check if there are values in the stack. If yes then we will first check if the first value is integer. Will add the values of a list into the stack otherwise.
         while self.stack:
-                top = self.stack[-1]
-                if top.isInteger():
-                    return True
-                self.stack = self.stack[:-1] + top.getList()[::-1]
+            if self.stack[0].isInteger():
+                return True
+            self.stack = self.stack[0].getList() + self.stack[1:]
         return False
-                      
 
 # Your NestedIterator object will be instantiated and called as such:
 # i, v = NestedIterator(nestedList), []
