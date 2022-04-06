@@ -22,20 +22,12 @@ You may assume the sum of all the numbers is in the range of a signed 32-bit int
 """
 class Solution:
     def checkSubarraySum(self, nums: List[int], k: int) -> bool:
-        """
-        The idea here is if two sums have the same module and they are atleast two indexes apart then we can return true otherwise false.
-         For [0,2],  k=2 prefix sum would be [0,2] and sum2 = 2 and sum1 = 0. sum2 - sum1 can be divided by k and the distance between those two indexes is atleast 2.
-        """
-        hmap = {0:-1} # initially at index -1 the sum would be zero.
-        for i in range(1,len(nums)):
-            nums[i] += nums[i-1] # prefix sum
-        for i in range(len(nums)):
-            temp = nums[i]
-            if k:
-                temp %= k 
-            if temp in hmap.keys():
-                if i - hmap[temp] >= 2:
-                    return True
+        hmap,total = {},0
+        for i,num in enumerate(nums):
+            total = (total + num) % k
+            if total == 0 and i > 0: return True # if total % k =0 that means we have a multiple of k present already and check if the array size is greater than or equal to 2.
+            if total not in hmap:
+                hmap[total] = i
             else:
-                hmap[temp] = i
+                if i - hmap[total] >= 2: return True
         return False
