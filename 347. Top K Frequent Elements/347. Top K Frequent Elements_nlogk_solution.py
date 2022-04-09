@@ -1,17 +1,9 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        hmap = {}
-        for item in nums:
-            if hmap.get(item):
-                hmap[item] += 1
-            else:
-                hmap[item] = 1
-        result = []
-        heapq.heapify(result)
-        for key,val in hmap.items():
-            if len(result) < k:
-                heapq.heappush(result,(val,key))
-            else:
-                if val > result[0][0]:
-                    heapq.heapreplace(result,(val,key))
-        return [arr[1] for arr in result]
+        #Calculate the frequency of all the elements in an array.
+        hmap = collections.Counter(nums)
+        # Create a max_heap of size n. (We can create a max_heap using min_heap by multiplying frequency by -1.)
+        max_heap = [(-v,k) for k,v in hmap.items()]
+        heapq.heapify(max_heap)
+        #pop k elements from max_heap.
+        return [heapq.heappop(max_heap)[1] for _ in range(k)]
