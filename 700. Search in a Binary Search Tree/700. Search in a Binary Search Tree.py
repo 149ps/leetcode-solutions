@@ -20,8 +20,6 @@ In the example above, if we want to search the value 5, since there is no node w
 
 Note that an empty tree is represented by NULL, therefore you would see the expected output (serialized tree format) as [], not null.
 """
-
-
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -29,17 +27,17 @@ Note that an empty tree is represented by NULL, therefore you would see the expe
 #         self.left = left
 #         self.right = right
 class Solution:
-    def searchBST(self, root: TreeNode, val: int) -> TreeNode:
-        if not root:
-            return None
+    def searchBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
+        if not root: return None
         q = collections.deque()
         q.append(root)
         while q:
             node = q.popleft()
             if node.val == val:
                 return node
-            if node.left:
-                q.append(node.left)
-            if node.right:
+            elif node.val < val and node.right:
                 q.append(node.right)
+            else:
+                if node.left:
+                    q.append(node.left)
         return None
