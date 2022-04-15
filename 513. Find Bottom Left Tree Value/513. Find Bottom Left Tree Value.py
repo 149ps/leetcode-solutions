@@ -34,18 +34,19 @@ Note: You may assume the tree (i.e., the given root node) is not NULL.
 #         self.left = left
 #         self.right = right
 class Solution:
-    def findBottomLeftValue(self, root: TreeNode) -> int:
+    def findBottomLeftValue(self, root: Optional[TreeNode]) -> int:
+        if not root: return None
         q = collections.deque()
         q.append(root)
-        bottom_left = root.val
+        result = None
         while q:
-            length = len(q)
-            for i in range(length):
+            n = len(q)
+            for x in range(n):
                 node = q.popleft()
-                if i == 0:
-                    bottom_left = node.val
+                if x == 0:
+                    result = node.val
                 if node.left:
                     q.append(node.left)
                 if node.right:
                     q.append(node.right)
-        return bottom_left
+        return result
