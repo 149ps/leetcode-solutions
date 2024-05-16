@@ -33,14 +33,14 @@ import collections
 class Solution:
     def customSortString(self, order: str, s: str) -> str:
         hmap, count = {}, collections.Counter(s)
-        for i,char in enumerate(order):
+        for i, char in enumerate(order):
             hmap[char] = i
         j = 0
-        result,temp = "",""
-        for key,val in hmap.items():
+        result, temp = "", ""
+        for key, val in hmap.items():
             if key in count:
                 result += count[key] * key
-        for k,v in count.items():
+        for k, v in count.items():
             if k not in hmap:
-                temp += k*v
+                temp += k * v
         return result + temp
